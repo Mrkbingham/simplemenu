@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('is_visible')->default(true);
             $table->dateTime('available_from')->nullable();
             $table->dateTime('available_to')->nullable();
+            $table->integer('sort')->nullable();
 
             // Menu Category relationship
             $table->foreignId('category_id')->constrained('menu_categories')->cascadeOnDelete();
