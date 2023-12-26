@@ -45,7 +45,7 @@ class MenuItemResource extends Resource
                         // Menu Category
                         Forms\Components\Section::make('Menu Category')
                             ->schema([
-                                Forms\Components\Select::make('category_id')
+                                Forms\Components\Select::make('menu_category_id')
                                     ->relationship('menuCategory', 'name')
                                     ->required()
                                     ->createOptionForm([

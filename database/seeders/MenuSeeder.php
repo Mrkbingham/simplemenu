@@ -194,7 +194,7 @@ class MenuSeeder extends Seeder
                 'name' => $item['name'],
                 'description' => $item['description'],
                 'unit_price' => $item['price'],
-                'category_id' => 1,
+                'menu_category_id' => 1,
             ]);
         }
 
@@ -209,7 +209,7 @@ class MenuSeeder extends Seeder
                 'name' => $item['name'],
                 'description' => $item['description'],
                 'unit_price' => $item['price'],
-                'category_id' => 2,
+                'menu_category_id' => 2,
             ]);
         }
 
@@ -224,7 +224,7 @@ class MenuSeeder extends Seeder
                 'name' => $item['name'],
                 'description' => $item['description'],
                 'unit_price' => $item['price'],
-                'category_id' => 3,
+                'menu_category_id' => 3,
             ]);
         }
     }

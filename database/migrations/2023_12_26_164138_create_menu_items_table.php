@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('sort')->nullable();
 
             // Menu Category relationship
-            $table->foreignId('category_id')->constrained('menu_categories')->cascadeOnDelete();
+            $table->foreignId('menu_category_id')->constrained('menu_categories')->cascadeOnDelete();
             $table->timestamps();
         });
     }

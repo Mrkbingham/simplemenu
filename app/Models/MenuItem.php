@@ -20,11 +20,11 @@ class MenuItem extends Model
         'is_visible',
         'available_from',
         'available_to',
-        'category_id',
+        'menu_category_id',
     ];
 
     public function menuCategory(): BelongsTo
     {
-        return $this->belongsTo(MenuCategory::class, 'category_id');
+        return $this->belongsTo(MenuCategory::class, 'menu_category_id');
     }
 }
