@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class MenuResource extends Resource
@@ -25,8 +26,22 @@ class MenuResource extends Resource
     {
         return $form
             ->schema([
-                //
-            ]);
+                Forms\Components\Group::make()
+                    ->schema([
+                        Forms\Components\Section::make()
+                            ->schema([
+                                Forms\Components\TextInput::make('brand_name')
+                                    ->required()
+                                    ->maxLength(255),
+
+                                Forms\Components\MarkdownEditor::make('brand_slogan')
+                                    ->columnSpan('full'),
+                            ])
+                            ->columns(2),
+                    ])
+                    ->columnSpan(['lg' => 2])
+            ])
+            ->columns(3);
     }
 
     public static function table(Table $table): Table
@@ -54,7 +69,7 @@ class MenuResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\MenuCategoryRelationManager::class,
         ];
     }
 
