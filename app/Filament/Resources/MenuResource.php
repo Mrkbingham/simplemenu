@@ -31,15 +31,35 @@ class MenuResource extends Resource
                         Forms\Components\Section::make()
                             ->schema([
                                 Forms\Components\TextInput::make('brand_name')
+                                    ->label('Restaurant Name')
                                     ->required()
                                     ->maxLength(255),
 
                                 Forms\Components\MarkdownEditor::make('brand_slogan')
+                                    ->label('Slogan / Tagline')
                                     ->columnSpan('full'),
                             ])
                             ->columns(2),
                     ])
-                    ->columnSpan(['lg' => 2])
+                    ->columnSpan(['lg' => 2]),
+
+                Forms\Components\Group::make()
+                    ->schema([
+                        // Menu Styles
+                        Forms\Components\Section::make('Menu Styles')
+                            ->schema([
+                                Forms\Components\ColorPicker::make('primary_color')
+                                    ->label('Primary Color')
+                                    ->default('#000000'),
+                                Forms\Components\ColorPicker::make('secondary_color')
+                                    ->label('Secondary Color')
+                                    ->default('#ffffff'),
+                                Forms\Components\ColorPicker::make('text_color')
+                                    ->label('Text Color')
+                                    ->default('#000000'),
+                            ]),
+                    ])
+                    ->columnSpan(['lg' => 1]),
             ])
             ->columns(3);
     }
