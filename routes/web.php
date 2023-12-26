@@ -19,4 +19,5 @@ Route::get('/', function () {
     return redirect('/app');
 });
 
-Route::get('/menu', Menu::class);
+// Set a route for /menu/{menu-name}
+Route::get('/menu/{menuSlug}', Menu::class);
