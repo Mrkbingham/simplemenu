@@ -28,6 +28,12 @@ console_command = "php /var/www/html/artisan tinker"
   DB_DATABASE="simplemenu"
   MYSQL_ATTR_SSL_CA="/etc/ssl/certs/ca-certificates.crt"
 
+[processes]
+  # Yes, this should be an empty string
+  app = ""
+  cron = "cron -f"
+  worker = "php artisan queue:listen"
+
 [http_service]
   internal_port = 8080
   force_https = true
