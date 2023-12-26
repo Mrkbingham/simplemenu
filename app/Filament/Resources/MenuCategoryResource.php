@@ -19,7 +19,9 @@ class MenuCategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Menu';
+    protected static ?string $navigationGroup = 'Menus';
+
+    protected static ?string $navigationParentItem = 'Menus';
 
     public static function form(Form $form): Form
     {

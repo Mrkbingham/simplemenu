@@ -19,6 +19,8 @@ class MenuResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Menus';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -31,7 +33,10 @@ class MenuResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('brand_name')
+                    ->label('Name')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
