@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // Re-route the the /app route
+    return redirect('/app');
 });
 
 Route::get('/menu', Menu::class);
