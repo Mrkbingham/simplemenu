@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('menu_items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('order')->unsigned()->default(0);
             $table->text('description')->nullable();
             $table->boolean('is_visible')->default(true);
             $table->dateTime('available_from')->nullable();
