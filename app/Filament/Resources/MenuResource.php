@@ -33,7 +33,16 @@ class MenuResource extends Resource
                                 Forms\Components\TextInput::make('brand_name')
                                     ->label('Restaurant Name')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+
+                                Forms\Components\TextInput::make('slug')
+                                    ->disabled()
+                                    ->dehydrated()
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->unique(Brand::class, 'slug', ignoreRecord: true),
 
                                 Forms\Components\MarkdownEditor::make('brand_slogan')
                                     ->label('Slogan / Tagline')

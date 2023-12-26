@@ -16,6 +16,7 @@ return new class extends Migration
 
             // Brand
             $table->string('brand_name')->nullable();
+            $table->string('slug')->unique();
             $table->string('brand_slogan')->nullable();
 
             // Contact

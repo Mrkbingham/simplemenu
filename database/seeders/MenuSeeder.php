@@ -185,6 +185,7 @@ class MenuSeeder extends Seeder
         // Create a fake menu
         \App\Models\Menu::factory()->create([
             'brand_name' => 'The Diner',
+            'slug' => 'the-diner',
             'brand_slogan' => 'The best diner in town',
             'phone_number' => '555-555-5555',
         ]);
