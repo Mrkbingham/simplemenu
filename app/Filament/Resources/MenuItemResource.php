@@ -84,6 +84,10 @@ class MenuItemResource extends Resource
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('unit_price')
+                    ->label('Price')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('menuCategory.name')
                     ->searchable()
                     ->sortable()
