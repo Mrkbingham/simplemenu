@@ -57,6 +57,13 @@ return [
             // ],
         ],
 
+        'mailersend' => [
+            'transport' => 'mailersend',
+            // 'client' => [
+            //     'timeout' => 5,
+            // ],
+        ],
+
         'postmark' => [
             'transport' => 'postmark',
             // 'message_stream_id' => null,
