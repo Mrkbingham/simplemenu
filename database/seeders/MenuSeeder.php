@@ -182,10 +182,18 @@ class MenuSeeder extends Seeder
      */
     public function run(): void
     {
+        // Create a fake menu
+        \App\Models\Menu::factory()->create([
+            'brand_name' => 'The Diner',
+            'brand_slogan' => 'The best diner in town',
+            'phone_number' => '555-555-5555',
+        ]);
+
         // Create three fake menu categories - breakfast lunch and dinner
         \App\Models\MenuCategory::factory()->create([
             'name' => 'Breakfast',
             'description' => 'The things you like in the morning - or whenever really.  Breakfast all day!',
+            'menu_id' => 1,
         ]);
 
         // Loop through and create the breakfast menu items
@@ -201,6 +209,7 @@ class MenuSeeder extends Seeder
         \App\Models\MenuCategory::factory()->create([
             'name' => 'Lunch',
             'description' => 'The things you like in the afternoon - or whenever really.  Lunch all day!',
+            'menu_id' => 1,
         ]);
 
         // Loop through and create the lunch menu items
@@ -216,6 +225,7 @@ class MenuSeeder extends Seeder
         \App\Models\MenuCategory::factory()->create([
             'name' => 'Dinner',
             'description' => 'The things you like in the evening - only in the evening.  We\'re serious about this.',
+            'menu_id' => 1,
         ]);
 
         // Loop through and create the dinner menu items
