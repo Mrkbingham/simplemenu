@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('sort')->nullable();
 
             // Menu relation
-            $table->foreignId('menu_id')->constrained('menus')->onDelete('cascade');
+            $table->foreignId('menu_id')->cascadeOnDelete();
             $table->timestamps();
         });
     }
