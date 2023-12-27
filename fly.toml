@@ -18,6 +18,7 @@ console_command = "php /var/www/html/artisan tinker"
 [env]
   APP_ENV = "production"
   APP_NAME = "SimpleMenu"
+  APP_URL=https://simplemenu.online"
   LOG_CHANNEL = "stderr"
   LOG_LEVEL = "info"
   LOG_STDERR_FORMATTER = "Monolog\\Formatter\\JsonFormatter"
