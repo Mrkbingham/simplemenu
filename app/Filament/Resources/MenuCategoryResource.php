@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Str;
 use App\Filament\Resources\MenuCategoryResource\Pages;
 use App\Filament\Resources\MenuCategoryResource\RelationManagers;
+use App\Models\Menu;
 use App\Models\MenuCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -36,6 +37,34 @@ class MenuCategoryResource extends Resource
                         Forms\Components\MarkdownEditor::make('description'),
                     ])
                 ->columnSpan(['lg' => 2]),
+                Forms\Components\Group::make()
+                    ->schema([
+                        // Menu Category
+                        Forms\Components\Section::make('Menu')
+                            ->schema([
+                                Forms\Components\Select::make('menu_id')
+                                    ->label('Associated Menu')
+                                    ->relationship('menus', 'brand_name')
+                                    ->required()
+                                    ->createOptionForm([
+                                        Forms\Components\TextInput::make('brand_name')
+                                            ->required()
+                                            ->maxLength(255)
+                                            ->live(onBlur: true)
+                                            ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'createOption' ? $set('slug', Str::slug($state)) : null),
+                                        Forms\Components\TextInput::make('slug')
+                                            ->disabled()
+                                            ->dehydrated()
+                                            ->required()
+                                            ->maxLength(255)
+                                            ->unique(Menu::class, 'slug', ignoreRecord: true),
+                                        Forms\Components\MarkdownEditor::make('brand_slogan')
+                                            ->label('Slogan / Tagline')
+                                            ->columnSpan('full')
+                                    ]),
+                            ]),
+                    ])
+                    ->columnSpan(['lg' => 1])
             ])
             ->columns(3);
     }
