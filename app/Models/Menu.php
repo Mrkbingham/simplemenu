@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -36,6 +37,17 @@ class Menu extends Model
         'youtube_link',
         'tiktok_link',
     ];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('team', function (Builder $query) {
+            if (auth()->check()) {
+                $query->where('team_id', auth()->user()->team_id);
+                // or with a `team` relationship defined:
+                $query->whereBelongsTo(auth()->user()->team);
+            }
+        });
+    }
 
     public function menuCategory(): HasMany
     {
