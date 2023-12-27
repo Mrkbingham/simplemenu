@@ -187,7 +187,7 @@ class MenuSeeder extends Seeder
             'brand_name' => 'The Diner',
             'slug' => 'the-diner',
             'brand_slogan' => 'The best diner in town',
-            'phone_number' => '555-555-5555',
+            'phone_number' => '402-555-5555',
         ]);
 
         // Create three fake menu categories - breakfast lunch and dinner
