@@ -42,10 +42,24 @@ class MenuResource extends Resource
                                     ->dehydrated()
                                     ->required()
                                     ->maxLength(255)
-                                    ->unique(Brand::class, 'slug', ignoreRecord: true),
+                                    ->unique(Menu::class, 'slug', ignoreRecord: true),
 
                                 Forms\Components\MarkdownEditor::make('brand_slogan')
                                     ->label('Slogan / Tagline')
+                                    ->columnSpan('full'),
+                            ])
+                            ->columns(2),
+                        Forms\Components\Section::make('Contact')
+                            ->schema([
+                                // Phone number field
+                                Forms\Components\TextInput::make('phone_number')
+                                    ->tel(),
+
+                                // Email field
+                                Forms\Components\TextInput::make('email')
+                                    ->email(),
+
+                                Forms\Components\Textarea::make('address')
                                     ->columnSpan('full'),
                             ])
                             ->columns(2),
@@ -57,14 +71,27 @@ class MenuResource extends Resource
                         // Menu Styles
                         Forms\Components\Section::make('Menu Styles')
                             ->schema([
-                                Forms\Components\ColorPicker::make('primary_color')
-                                    ->label('Primary Color')
-                                    ->default('#000000'),
-                                Forms\Components\ColorPicker::make('secondary_color')
-                                    ->label('Secondary Color')
+                                Forms\Components\FileUpload::make('logo')
+                                    ->image()
+                                    ->imageEditor(),
+
+                                Forms\Components\ColorPicker::make('header_bg_color')
+                                    ->label('Header Color')
                                     ->default('#ffffff'),
-                                Forms\Components\ColorPicker::make('text_color')
-                                    ->label('Text Color')
+                                Forms\Components\ColorPicker::make('header_text_color')
+                                    ->label('Header Text Color')
+                                    ->default('#000000'),
+                                Forms\Components\ColorPicker::make('body_bg_color')
+                                    ->label('Body Color')
+                                    ->default('#ffffff'),
+                                Forms\Components\ColorPicker::make('body_text_color')
+                                    ->label('Body Text Color')
+                                    ->default('#000000'),
+                                Forms\Components\ColorPicker::make('footer_bg_color')
+                                    ->label('Footer Color')
+                                    ->default('#ffffff'),
+                                Forms\Components\ColorPicker::make('footer_text_color')
+                                    ->label('Footer Text Color')
                                     ->default('#000000'),
                             ]),
                     ])

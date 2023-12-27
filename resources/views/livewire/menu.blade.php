@@ -63,10 +63,20 @@
             <div class="container mx-auto">
                 <div class="flex flex-wrap justify-between items-center">
                     <div class="w-full md:w-auto mx-auto my-12">
-                        <h3 class="text-2xl mb-2">Company Name</h3>
-                        <address>
-                            123 Main Street, Anytown, USA
+                        <h3 class="text-2xl mb-2">{{$menu->brand_name}}</h3>
+                        {{-- Phone Number --}}
+                        @if (!empty($menu->phone_number))
+                        <span class="text-1xl mb-2">
+                            {{$menu->phone_number}}
+                        </span>
+                        @endif
+
+                        {{-- Address --}}
+                        @if (!empty($menu->address))
+                        <address class="mb-2">
+                            {{$menu->address}}
                         </address>
+                        @endif
                     </div>
                     <div class="flex items-center">
                         <a href="#" class="text-white mx-2">
