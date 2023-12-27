@@ -14,6 +14,7 @@ class Menu extends Model
      * @var string Fillable fields
      */
     protected $fillable = [
+        'slug',
         'brand_name',
         'brand_slogan',
         'phone_number',

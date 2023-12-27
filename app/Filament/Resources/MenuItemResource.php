@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use Str;
 use App\Filament\Resources\MenuItemResource\Pages;
 use App\Filament\Resources\MenuItemResource\RelationManagers;
+use App\Models\Menu;
+use App\Models\MenuCategory;
 use App\Models\MenuItem;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -57,6 +60,28 @@ class MenuItemResource extends Resource
                                             ->required()
                                             ->maxLength(255),
                                         Forms\Components\MarkdownEditor::make('description'),
+                                        Forms\Components\Select::make('menu_id')
+                                            ->label('Associated Menu')
+                                            ->relationship('menus', 'brand_name')
+                                            ->required()
+                                            ->createOptionForm([
+                                                Forms\Components\TextInput::make('brand_name')
+                                                    ->required()
+                                                    ->maxLength(255)
+                                                    ->live(onBlur: true)
+                                                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                                                        return strpos($operation, 'createOption') !== false ? $set('slug', Str::slug($state)) : null;
+                                                    }),
+                                                Forms\Components\TextInput::make('slug')
+                                                    ->disabled()
+                                                    ->dehydrated()
+                                                    ->required()
+                                                    ->maxLength(255)
+                                                    ->unique(Menu::class, 'slug', ignoreRecord: true),
+                                                Forms\Components\MarkdownEditor::make('brand_slogan')
+                                                    ->label('Slogan / Tagline')
+                                                    ->columnSpan('full'),
+                                            ]),
                                     ]),
                             ]),
 
