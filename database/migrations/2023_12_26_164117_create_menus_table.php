@@ -25,13 +25,12 @@ return new class extends Migration
             $table->string('address')->nullable();
 
             // Colors
-            $table->string('primary_color')->nullable();
-            $table->string('secondary_color')->nullable();
-            $table->string('tertiary_color')->nullable();
-            $table->string('accent_color')->nullable();
-            $table->string('background_color')->nullable();
-            $table->string('text_color')->nullable();
-            $table->string('link_color')->nullable();
+            $table->string('header_bg_color')->nullable();
+            $table->string('header_text_color')->nullable();
+            $table->string('body_bg_color')->nullable();
+            $table->string('body_text_color')->nullable();
+            $table->string('footer_bg_color')->nullable();
+            $table->string('footer_text_color')->nullable();
 
             // Logo
             $table->string('logo')->nullable();
