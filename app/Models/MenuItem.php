@@ -24,6 +24,22 @@ class MenuItem extends Model
         'menu_category_id',
     ];
 
+    public function isVisible(): bool
+    {
+        // If the available_from or available_to is null, set it to 10 years ago
+        $this->available_from = $this->available_from ?? now()->subYears(10);
+        $this->available_to   = $this->available_to ?? now()->addYears(10);
+
+        // Check to see if the
+        $now = now();
+
+        if ($now->between($this->available_from, $this->available_to)) {
+            return $this->is_visible;
+        } else {
+            return false;
+        }
+    }
+
     public function menus(): BelongsTo
     {
         return $this->belongsTo(MenuModel::class, 'menu_id');

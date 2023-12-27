@@ -36,7 +36,13 @@
                     @endif
 
                     {{-- Menu Items --}}
-                    @foreach ($category->menuItems()->get() as $item)
+                    @php
+                        // PHP Query to retrieve all menu items, then filter out any menu items that return false for
+                        $items = $category->menuItems()->get()->filter(function ($item) {
+                            return $item->isVisible();
+                        });
+                    @endphp
+                    @foreach ($items as $item)
                         {{-- Every other loop, add a new div --}}
                         @if ($loop->odd)
                             <div class="flex flex-col md:flex-row md:w-2/3 mx-auto md:justify-around">
@@ -74,6 +80,14 @@
                         {{-- Address --}}
                         @if (!empty($menu->address))
                         <address class="mb-2">
+
+
+
+
+
+
+
+                            {{-- TODO: Keep the \n newlines in here!!! --}}
                             {{$menu->address}}
                         </address>
                         @endif
