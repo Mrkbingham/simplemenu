@@ -30,7 +30,7 @@ console_command = "php /var/www/html/artisan tinker"
   MYSQL_ATTR_SSL_CA="/etc/ssl/certs/ca-certificates.crt"
   MAIL_MAILER="mailersend"
   MAIL_FROM_ADDRESS="noreply@simplemenu.online"
-  MAIL_FROM_NAME="${APP_NAME}"
+  MAIL_FROM_NAME="SimpleMenu"
 
 [processes]
   # Yes, this should be an empty string
