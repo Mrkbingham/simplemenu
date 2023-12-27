@@ -3,6 +3,8 @@
 namespace App\Providers\Filament;
 
 use App\Models\Team;
+use App\Filament\Pages\Tenancy\RegisterTeam;
+use App\Filament\Pages\Tenancy\EditTeamProfile;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -33,7 +35,6 @@ class AppPanelProvider extends PanelProvider
             ->passwordReset()
             ->emailVerification()
             ->profile()
-            ->tenant(Team::class)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -60,6 +61,9 @@ class AppPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->tenant(Team::class, ownershipRelationship: 'team', slugAttribute: 'slug')
+            ->tenantRegistration(RegisterTeam::class)
+            ->tenantProfile(EditTeamProfile::class);
     }
 }
