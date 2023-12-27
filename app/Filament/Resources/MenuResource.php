@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use Str;
 use App\Filament\Resources\MenuResource\Pages;
 use App\Filament\Resources\MenuResource\RelationManagers;
 use App\Models\Menu;
