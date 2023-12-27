@@ -70,7 +70,9 @@ class MenuItemResource extends Resource
                                                     ->maxLength(255)
                                                     ->live(onBlur: true)
                                                     ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
-                                                        return strpos($operation, 'createOption') !== false ? $set('slug', Str::slug($state)) : null;
+                                                        strpos($operation, 'createOption') !== false
+                                                            ? $set('slug', Str::slug($state))
+                                                            : null;
                                                     }),
                                                 Forms\Components\TextInput::make('slug')
                                                     ->disabled()
