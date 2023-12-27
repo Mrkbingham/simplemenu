@@ -19,13 +19,12 @@ class Menu extends Model
         'phone_number',
         'email',
         'address',
-        'primary_color',
-        'secondary_color',
-        'tertiary_color',
-        'accent_color',
-        'background_color',
-        'text_color',
-        'link_color',
+        'header_bg_color',
+        'header_text_color',
+        'body_bg_color',
+        'body_text_color',
+        'footer_bg_color',
+        'footer_text_color',
         'logo',
         'favicon',
         'logo_width',
@@ -39,6 +38,6 @@ class Menu extends Model
 
     public function menuCategory(): HasMany
     {
-        return $this->hasMany(MenuCategory::class);
+        return $this->hasMany(MenuCategory::class, 'menu_id');
     }
 }
