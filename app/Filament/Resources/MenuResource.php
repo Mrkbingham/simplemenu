@@ -45,6 +45,10 @@ class MenuResource extends Resource
                                     ->maxLength(255)
                                     ->unique(Menu::class, 'slug', ignoreRecord: true),
 
+                                Forms\Components\ViewField::make('Menu Link')
+                                    ->view('forms.components.page-link')
+                                    ->hidden(fn (string $operation): bool => $operation === 'create'),
+
                                 Forms\Components\MarkdownEditor::make('brand_slogan')
                                     ->label('Slogan / Tagline')
                                     ->columnSpan('full'),
